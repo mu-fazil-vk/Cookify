@@ -1,14 +1,32 @@
 import 'package:cooky_recipe/api/api_fetch.dart';
+import 'package:cooky_recipe/constants/constant.dart';
 import 'package:cooky_recipe/storage/store_data.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:marquee/marquee.dart';
 import 'package:provider/provider.dart';
 import '../states/bookmark_provider.dart';
 
 Widget selectionContainer(
     double height, double width, bool selected, Widget widget) {
   return Container(
+    width: width,
     height: height,
+    decoration: BoxDecoration(
+        borderRadius: const BorderRadius.all(Radius.circular(20)),
+        border: Border.all(
+            color: selected == true ? const Color(0xff00cfc8) : Colors.grey,
+            width: selected == true ? 2 : 0.75)),
+    child: Padding(
+      padding: const EdgeInsets.all(20),
+      child: widget,
+    ),
+  );
+}
+
+Widget longestSelectionContainer(double width, bool selected, Widget widget) {
+  return Container(
     width: width,
     decoration: BoxDecoration(
         borderRadius: const BorderRadius.all(Radius.circular(20)),
@@ -24,34 +42,46 @@ Widget selectionContainer(
 
 Widget longSelectionContainer(
     Size screenSize, String imagePath, String text, bool selected) {
-  return Container(
-    height: 70,
-    width: (screenSize.width / 2) - 32,
-    decoration: BoxDecoration(
+  return SingleChildScrollView(
+    child: Container(
+      height: 70,
+      width: (screenSize.width / 2) - 32,
+      decoration: BoxDecoration(
         border: Border.all(
-            color: selected == true ? const Color(0xff00cfc8) : Colors.grey,
-            width: selected == true ? 2 : 0.90),
-        borderRadius: BorderRadius.circular(12)),
-    child: Padding(
-      padding: const EdgeInsets.all(10),
-      child: Row(
-        children: [
-          Container(
-            height: 50,
-            width: 50,
-            decoration: BoxDecoration(
+          color: selected == true ? const Color(0xff00cfc8) : Colors.grey,
+          width: selected == true ? 2 : 0.90,
+        ),
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(10),
+        child: Row(
+          children: [
+            Container(
+              height: 50,
+              width: 50,
+              decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage(imagePath), fit: BoxFit.cover),
-                borderRadius: BorderRadius.circular(10)),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 9),
-            child: Text(
-              text,
-              style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                  image: AssetImage(imagePath),
+                  fit: BoxFit.cover,
+                ),
+                borderRadius: BorderRadius.circular(10),
+              ),
             ),
-          ),
-        ],
+            const SizedBox(width: 9),
+            Expanded(
+              child: Marquee(
+                text: text,
+                style:
+                    const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                scrollAxis: Axis.horizontal,
+                startAfter: const Duration(seconds: 3),
+                pauseAfterRound: const Duration(seconds: 3),
+                blankSpace: 50,
+              ),
+            ),
+          ],
+        ),
       ),
     ),
   );
@@ -61,8 +91,9 @@ Widget homeSelect(Meals meal) {
   return Consumer<BookmarkProvider>(
     builder: (context, bookmarkProvider, _) {
       return Container(
-        height: 250,
-        width: 170,
+        clipBehavior: Clip.hardEdge,
+        height: MediaQuery.of(context).size.width / 2 + 50,
+        width: MediaQuery.of(context).size.width / 2 - 29,
         padding: const EdgeInsets.only(bottom: 20, left: 20),
         margin: const EdgeInsets.only(top: 20, left: 20),
         decoration: BoxDecoration(
@@ -84,7 +115,7 @@ Widget homeSelect(Meals meal) {
               children: [
                 Container(
                   height: 50,
-                  width: 135,
+                  width: 125,
                   decoration: const BoxDecoration(boxShadow: [
                     BoxShadow(blurRadius: 50, blurStyle: BlurStyle.normal)
                   ]),
@@ -120,7 +151,7 @@ Widget homeSelect(Meals meal) {
                         shape: BoxShape.circle, color: Colors.white),
                     child: SvgPicture.asset("assets/icons/bookmark.svg",
                         color: meal.isBookmarked == true
-                            ? Colors.blue
+                            ? Constant.baseColor
                             : Colors.black26)),
                 onTap: () {
                   final bool bmark = bookmarkProvider.bmchanges;

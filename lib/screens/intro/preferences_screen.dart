@@ -134,8 +134,7 @@ class _CookingLevelState extends State<CookingLevel> {
                             selection = 1;
                           });
                         },
-                        child: selectionContainer(
-                            160,
+                        child: longestSelectionContainer(
                             size.width,
                             selection == 1 ? true : false,
                             Column(
@@ -172,8 +171,7 @@ class _CookingLevelState extends State<CookingLevel> {
                               selection = 2;
                             });
                           },
-                          child: selectionContainer(
-                              170,
+                          child: longestSelectionContainer(
                               size.width,
                               selection == 2 ? true : false,
                               Column(
@@ -209,8 +207,7 @@ class _CookingLevelState extends State<CookingLevel> {
                             selection = 3;
                           });
                         },
-                        child: selectionContainer(
-                            160,
+                        child: longestSelectionContainer(
                             size.width,
                             selection == 3 ? true : false,
                             Column(
@@ -247,8 +244,7 @@ class _CookingLevelState extends State<CookingLevel> {
                               selection = 4;
                             });
                           },
-                          child: selectionContainer(
-                              170,
+                          child: longestSelectionContainer(
                               size.width,
                               selection == 4 ? true : false,
                               Column(

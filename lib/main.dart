@@ -1,7 +1,6 @@
 import 'package:cooky_recipe/states/bookmark_provider.dart';
 import 'package:cooky_recipe/screens/splash_screen.dart';
 import 'package:cooky_recipe/states/theme_provider.dart';
-import 'package:cooky_recipe/storage/store_data.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
