@@ -10,7 +10,8 @@ class CustomProgressIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width - 200, // set the total width of the progress indicator
+      width: MediaQuery.of(context).size.width -
+          200, // set the total width of the progress indicator
       height: 8,
       decoration: BoxDecoration(
         color: Colors.grey[200], // set the background color to red
@@ -19,7 +20,8 @@ class CustomProgressIndicator extends StatelessWidget {
       child: Stack(
         children: [
           AnimatedContainer(
-            duration: const Duration(milliseconds: 600), // set the animation duration
+            duration:
+                const Duration(milliseconds: 600), // set the animation duration
             decoration: BoxDecoration(
               color: Constant.baseColor, // set the foreground color to yellow
               borderRadius: BorderRadius.circular(10),

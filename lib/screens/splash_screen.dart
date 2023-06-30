@@ -17,9 +17,9 @@ class _SplashScreenState extends State<SplashScreen> {
     Future.delayed(const Duration(seconds: 2), () {
       // just delay for showing this slash page clearer because it too fast
       Navigator.pushReplacement(
-      context,
-      MaterialPageRoute(builder: (context) => const IntroScreen()),
-    );
+        context,
+        MaterialPageRoute(builder: (context) => const IntroScreen()),
+      );
     });
   }
 
@@ -41,8 +41,15 @@ class _SplashScreenState extends State<SplashScreen> {
           const SizedBox(
             height: 60,
             width: 60,
-            child: LoadingIndicator(indicatorType: Indicator.ballRotateChase,
-            colors: [Color(0xff00cfc8), Color.fromARGB(255, 255, 3, 238), Color.fromARGB(255, 0, 252, 8), Color.fromARGB(255, 255, 166, 0)],),
+            child: LoadingIndicator(
+              indicatorType: Indicator.ballRotateChase,
+              colors: [
+                Color(0xff00cfc8),
+                Color.fromARGB(255, 255, 3, 238),
+                Color.fromARGB(255, 0, 252, 8),
+                Color.fromARGB(255, 255, 166, 0)
+              ],
+            ),
           )
         ],
       ),

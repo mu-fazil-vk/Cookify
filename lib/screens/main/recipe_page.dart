@@ -4,7 +4,6 @@ import 'package:cooky_recipe/storage/store_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-
 class RecipePage extends StatefulWidget {
   const RecipePage({super.key, required this.meal});
 

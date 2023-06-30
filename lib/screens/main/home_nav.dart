@@ -32,57 +32,65 @@ class HomeNavScreenState extends State<HomeNavScreen> {
           padding: const EdgeInsets.all(20),
           child: Consumer<ThemeProvider>(builder: (context, themeProvider, _) {
             return Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                color: themeProvider.isDarkMode? Color.fromARGB(82, 0, 0, 0) : Constant.white,
-                boxShadow: [
-                  BoxShadow(
-                    blurRadius: 20,
-                    color: Colors.black.withOpacity(.1),
-                  )
-                ],
-              ),
-              child: SafeArea(
-                  child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 12.0, vertical: 10),
-                child: GNav(
-                  rippleColor: Colors.grey[300]!,
-                  hoverColor: Colors.grey[100]!,
-                  gap: 8,
-                  activeColor: Constant.baseColor,
-                  iconSize: 24,
-                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-                  duration: const Duration(milliseconds: 400),
-                  tabBackgroundColor: Constant.skipButton,
-                  color: Colors.black,
-                  tabs: [
-                    GButton(
-                      iconColor: themeProvider.isDarkMode? Constant.white : Constant.black,
-                      icon: Icons.home,
-                      text: 'Home',
-                    ),
-                    GButton(
-                      iconColor: themeProvider.isDarkMode? Constant.white : Constant.black,
-                      icon: Icons.search,
-                      text: 'Search',
-                    ),
-                    GButton(
-                      iconColor: themeProvider.isDarkMode? Constant.white : Constant.black,
-                      icon: Icons.bookmark,
-                      text: 'Saved',
-                    ),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: themeProvider.isDarkMode
+                      ? const Color.fromARGB(82, 0, 0, 0)
+                      : Constant.white,
+                  boxShadow: [
+                    BoxShadow(
+                      blurRadius: 20,
+                      color: Colors.black.withOpacity(.1),
+                    )
                   ],
-                  selectedIndex: _selectedIndex,
-                  onTabChange: (index) {
-                    setState(() {
-                      _selectedIndex = index;
-                    });
-                  },
                 ),
-              )));
-          }
-          ),
+                child: SafeArea(
+                    child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 12.0, vertical: 10),
+                  child: GNav(
+                    rippleColor: Colors.grey[300]!,
+                    hoverColor: Colors.grey[100]!,
+                    gap: 8,
+                    activeColor: Constant.baseColor,
+                    iconSize: 24,
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 12),
+                    duration: const Duration(milliseconds: 400),
+                    tabBackgroundColor: Constant.skipButton,
+                    color: Colors.black,
+                    tabs: [
+                      GButton(
+                        iconColor: themeProvider.isDarkMode
+                            ? Constant.white
+                            : Constant.black,
+                        icon: Icons.home,
+                        text: 'Home',
+                      ),
+                      GButton(
+                        iconColor: themeProvider.isDarkMode
+                            ? Constant.white
+                            : Constant.black,
+                        icon: Icons.search,
+                        text: 'Search',
+                      ),
+                      GButton(
+                        iconColor: themeProvider.isDarkMode
+                            ? Constant.white
+                            : Constant.black,
+                        icon: Icons.bookmark,
+                        text: 'Saved',
+                      ),
+                    ],
+                    selectedIndex: _selectedIndex,
+                    onTabChange: (index) {
+                      setState(() {
+                        _selectedIndex = index;
+                      });
+                    },
+                  ),
+                )));
+          }),
         ));
   }
 }

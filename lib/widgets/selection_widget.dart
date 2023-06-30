@@ -58,7 +58,6 @@ Widget longSelectionContainer(
 }
 
 Widget homeSelect(Meals meal) {
-
   return Consumer<BookmarkProvider>(
     builder: (context, bookmarkProvider, _) {
       return Container(
@@ -123,35 +122,34 @@ Widget homeSelect(Meals meal) {
                         color: meal.isBookmarked == true
                             ? Colors.blue
                             : Colors.black26)),
-                onTap: ()  {
+                onTap: () {
                   final bool bmark = bookmarkProvider.bmchanges;
                   bookmarkProvider.toggleBookmark(!bmark);
                   if (meal.isBookmarked) {
-                     removeBookmark(meal.id);
-                     meal =  Meals(
-                              name: meal.name,
-                              category: meal.category,
-                              id: meal.id,
-                              image: meal.image,
-                              instruction: meal.instruction,
-                              ingredients: meal.ingredients,
-                              measure: meal.measure,
-                              isBookmarked: false,
-                            );
-                  } else {
-                     addBookmark(meal.id);
+                    removeBookmark(meal.id);
                     meal = Meals(
-                              name: meal.name,
-                              category: meal.category,
-                              id: meal.id,
-                              image: meal.image,
-                              instruction: meal.instruction,
-                              ingredients: meal.ingredients,
-                              measure: meal.measure,
-                              isBookmarked: true,
-                            );
+                      name: meal.name,
+                      category: meal.category,
+                      id: meal.id,
+                      image: meal.image,
+                      instruction: meal.instruction,
+                      ingredients: meal.ingredients,
+                      measure: meal.measure,
+                      isBookmarked: false,
+                    );
+                  } else {
+                    addBookmark(meal.id);
+                    meal = Meals(
+                      name: meal.name,
+                      category: meal.category,
+                      id: meal.id,
+                      image: meal.image,
+                      instruction: meal.instruction,
+                      ingredients: meal.ingredients,
+                      measure: meal.measure,
+                      isBookmarked: true,
+                    );
                     bookmarkProvider.toggleBookmark(!bmark);
-
                   }
                 },
               ),

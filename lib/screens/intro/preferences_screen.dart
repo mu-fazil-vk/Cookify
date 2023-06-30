@@ -690,8 +690,12 @@ class _DietaryPreferencesState extends State<DietaryPreferences> {
           children: [
             const Text(
               'Do you have any dietary preferences? 🥣',
-              style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold, letterSpacing: 0.7,
-                                      fontFamily: 'Poppins',),
+              style: TextStyle(
+                fontSize: 26,
+                fontWeight: FontWeight.bold,
+                letterSpacing: 0.7,
+                fontFamily: 'Poppins',
+              ),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 20, bottom: 20),
@@ -701,7 +705,7 @@ class _DietaryPreferencesState extends State<DietaryPreferences> {
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
                     letterSpacing: 0.7,
-                                      fontFamily: 'Ubuntu',
+                    fontFamily: 'Ubuntu',
                     color: Constant.secondTextHeadColor),
               ),
             ),

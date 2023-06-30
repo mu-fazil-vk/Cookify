@@ -42,7 +42,6 @@ Future<List<String>> getBookmarkedIds() async {
   return bookmarkedIds;
 }
 
-
 //theme
 // Function to add a bookmarked ID
 Future<void> setTheme(String selectedTheme) async {

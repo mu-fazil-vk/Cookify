@@ -52,22 +52,24 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return 
-    Scaffold(
+    return Scaffold(
         appBar: AppBar(
           title: Row(
             children: [
-              Consumer<ThemeProvider>(builder: (context, themeProvider, _) {
-              return Text(
-                "Cookify",
-                style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: themeProvider.isDarkMode == true? Constant.black : Constant.white,
-                    fontFamily: 'Poppins',
-                    letterSpacing: 0.9),
-              );
-              },
+              Consumer<ThemeProvider>(
+                builder: (context, themeProvider, _) {
+                  return Text(
+                    "Cookify",
+                    style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: themeProvider.isDarkMode == true
+                            ? Constant.black
+                            : Constant.white,
+                        fontFamily: 'Poppins',
+                        letterSpacing: 0.9),
+                  );
+                },
               ),
               Lottie.asset("assets/cook.json", height: 50, width: 50),
             ],
@@ -75,16 +77,18 @@ class _HomePageState extends State<HomePage> {
           actions: [
             Consumer<ThemeProvider>(builder: (context, themeProvider, _) {
               return IconButton(
-                icon: themeProvider.isDarkMode? SvgPicture.asset(
-                 "assets/icons/sun.svg",
-                  height: 50,
-                  width: 50,
-                ) : SvgPicture.asset(
-                 "assets/icons/moon.svg",
-                  height: 50,
-                  width: 50,
-                  color: Colors.black,
-                ),
+                icon: themeProvider.isDarkMode
+                    ? SvgPicture.asset(
+                        "assets/icons/sun.svg",
+                        height: 50,
+                        width: 50,
+                      )
+                    : SvgPicture.asset(
+                        "assets/icons/moon.svg",
+                        height: 50,
+                        width: 50,
+                        color: Colors.black,
+                      ),
                 onPressed: () {
                   Provider.of<ThemeProvider>(context, listen: false)
                       .toggleTheme();

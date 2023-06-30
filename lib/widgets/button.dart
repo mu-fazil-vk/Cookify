@@ -25,7 +25,8 @@ Widget customSkipButton(double height, double width, String text) {
     child: Center(
         child: Text(
       text,
-      style: const TextStyle(color: Color.fromARGB(255, 0, 207, 200), fontWeight: FontWeight.bold),
+      style: const TextStyle(
+          color: Color.fromARGB(255, 0, 207, 200), fontWeight: FontWeight.bold),
     )),
   );
 }
