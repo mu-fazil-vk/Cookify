@@ -1,12 +1,18 @@
+// ignore_for_file: deprecated_member_use
+
 import 'dart:async';
 
 import 'package:cooky_recipe/api/api_fetch.dart';
+import 'package:cooky_recipe/constants/constant.dart';
 import 'package:cooky_recipe/screens/main/recipe_page.dart';
+import 'package:cooky_recipe/storage/store_data.dart';
 import 'package:cooky_recipe/widgets/selection_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:lottie/lottie.dart';
+import 'package:provider/provider.dart';
 
-import '../../constants/constant.dart';
+import '../../states/theme_provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -46,23 +52,48 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return 
+    Scaffold(
         appBar: AppBar(
           title: Row(
             children: [
-              const Text(
+              Consumer<ThemeProvider>(builder: (context, themeProvider, _) {
+              return Text(
                 "Cookify",
                 style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
-                    color: Colors.black,
+                    color: themeProvider.isDarkMode == true? Constant.black : Constant.white,
                     fontFamily: 'Poppins',
                     letterSpacing: 0.9),
+              );
+              },
               ),
               Lottie.asset("assets/cook.json", height: 50, width: 50),
             ],
           ),
-          backgroundColor: Constant.white,
+          actions: [
+            Consumer<ThemeProvider>(builder: (context, themeProvider, _) {
+              return IconButton(
+                icon: themeProvider.isDarkMode? SvgPicture.asset(
+                 "assets/icons/sun.svg",
+                  height: 50,
+                  width: 50,
+                ) : SvgPicture.asset(
+                 "assets/icons/moon.svg",
+                  height: 50,
+                  width: 50,
+                  color: Colors.black,
+                ),
+                onPressed: () {
+                  Provider.of<ThemeProvider>(context, listen: false)
+                      .toggleTheme();
+                  setTheme(themeProvider.isDarkMode ? 'dark' : 'light');
+                },
+              );
+            }),
+          ],
+          backgroundColor: Constant.baseColor,
           elevation: 0,
         ),
         body: SafeArea(
@@ -79,13 +110,11 @@ class _HomePageState extends State<HomePage> {
                             i < mealData.length && i < row * 2 + 2;
                             i++)
                           InkWell(
-                              onTap: () =>
-                                  Navigator.of(context).push(MaterialPageRoute(
-                                      builder: (context) => RecipePage(
-                                            meal: mealData[i]
-                                          ))),
-                              child:  homeSelect(
-                                      mealData[i])),
+                              onTap: () => Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          RecipePage(meal: mealData[i]))),
+                              child: homeSelect(mealData[i])),
                       ],
                     ),
                   ),

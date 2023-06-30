@@ -1,4 +1,5 @@
 import 'package:cooky_recipe/screens/main/home_nav.dart';
+import 'package:cooky_recipe/storage/store_data.dart';
 import 'package:cooky_recipe/widgets/button.dart';
 import 'package:cooky_recipe/widgets/selection_widget.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +17,17 @@ class PreferencesScreen extends StatefulWidget {
 class _PreferencesScreenState extends State<PreferencesScreen> {
   final PageController _pageController = PageController(initialPage: 0);
   int _currentPageIndex = 0;
+  late String _theme;
+
+  @override
+  initState() {
+    super.initState();
+    fetchTheme();
+  }
+
+  Future<void> fetchTheme() async {
+    _theme = await getTheme();
+  }
 
   void goToPage(int pageIndex) {
     setState(() {
@@ -40,9 +52,9 @@ class _PreferencesScreenState extends State<PreferencesScreen> {
                   },
                   icon: Icon(
                     Icons.arrow_back,
-                    color: Constant.black,
+                    color: _theme == 'light' ? Constant.black : Constant.white,
                   )),
-          backgroundColor: Constant.white,
+          //backgroundColor: Constant.white,
           elevation: 0,
           centerTitle: true,
           title: Center(
@@ -93,7 +105,10 @@ class _CookingLevelState extends State<CookingLevel> {
           children: [
             Text(
               Constant.cookingLvlHead,
-              style: const TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+              style: const TextStyle(
+                  fontSize: 26,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'Poppins'),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 20, bottom: 20),
@@ -102,6 +117,8 @@ class _CookingLevelState extends State<CookingLevel> {
                 style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
+                    fontFamily: 'Ubuntu',
+                    letterSpacing: 0.7,
                     color: Constant.secondTextHeadColor),
               ),
             ),
@@ -127,7 +144,9 @@ class _CookingLevelState extends State<CookingLevel> {
                                 Text(
                                   Constant.beginnerHead,
                                   style: const TextStyle(
-                                      fontSize: 18,
+                                      fontSize: 16,
+                                      letterSpacing: 0.7,
+                                      fontFamily: 'Poppins',
                                       fontWeight: FontWeight.bold),
                                 ),
                                 Padding(
@@ -137,6 +156,8 @@ class _CookingLevelState extends State<CookingLevel> {
                                     style: TextStyle(
                                         fontSize: 16,
                                         fontWeight: FontWeight.bold,
+                                        letterSpacing: 0.7,
+                                        fontFamily: 'Ubuntu',
                                         color: Constant.secondTextColor),
                                   ),
                                 ),
@@ -161,7 +182,9 @@ class _CookingLevelState extends State<CookingLevel> {
                                   Text(
                                     Constant.intermediateHead,
                                     style: const TextStyle(
-                                        fontSize: 18,
+                                        fontSize: 16,
+                                        letterSpacing: 0.7,
+                                        fontFamily: 'Poppins',
                                         fontWeight: FontWeight.bold),
                                   ),
                                   Padding(
@@ -171,6 +194,8 @@ class _CookingLevelState extends State<CookingLevel> {
                                       style: TextStyle(
                                           fontSize: 16,
                                           fontWeight: FontWeight.bold,
+                                          letterSpacing: 0.7,
+                                          fontFamily: 'Ubuntu',
                                           color: Constant.secondTextColor),
                                     ),
                                   ),
@@ -194,7 +219,9 @@ class _CookingLevelState extends State<CookingLevel> {
                                 Text(
                                   Constant.advancedHead,
                                   style: const TextStyle(
-                                      fontSize: 18,
+                                      fontSize: 16,
+                                      letterSpacing: 0.7,
+                                      fontFamily: 'Poppins',
                                       fontWeight: FontWeight.bold),
                                 ),
                                 Padding(
@@ -203,6 +230,8 @@ class _CookingLevelState extends State<CookingLevel> {
                                     Constant.advancedDesc,
                                     style: TextStyle(
                                         fontSize: 16,
+                                        letterSpacing: 0.7,
+                                        fontFamily: 'Ubuntu',
                                         fontWeight: FontWeight.bold,
                                         color: Constant.secondTextColor),
                                   ),
@@ -228,7 +257,9 @@ class _CookingLevelState extends State<CookingLevel> {
                                   Text(
                                     Constant.profHead,
                                     style: const TextStyle(
-                                        fontSize: 18,
+                                        fontSize: 16,
+                                        letterSpacing: 0.7,
+                                        fontFamily: 'Poppins',
                                         fontWeight: FontWeight.bold),
                                   ),
                                   Padding(
@@ -237,6 +268,8 @@ class _CookingLevelState extends State<CookingLevel> {
                                       Constant.profDesc,
                                       style: TextStyle(
                                           fontSize: 16,
+                                          letterSpacing: 0.7,
+                                          fontFamily: 'Ubuntu',
                                           fontWeight: FontWeight.bold,
                                           color: Constant.secondTextColor),
                                     ),
@@ -294,7 +327,12 @@ class _CuisinePreferencesState extends State<CuisinePreferences> {
           children: [
             const Text(
               'Select your cuisine preferences 🍳',
-              style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                fontSize: 26,
+                fontWeight: FontWeight.bold,
+                letterSpacing: 0.7,
+                fontFamily: 'Poppins',
+              ),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 20, bottom: 20),
@@ -302,6 +340,8 @@ class _CuisinePreferencesState extends State<CuisinePreferences> {
                 'Select your cuisine preferences for better recommendations or you can skip it.',
                 style: TextStyle(
                     fontSize: 16,
+                    letterSpacing: 0.7,
+                    fontFamily: 'Ubuntu',
                     fontWeight: FontWeight.bold,
                     color: Constant.secondTextHeadColor),
               ),
@@ -650,7 +690,8 @@ class _DietaryPreferencesState extends State<DietaryPreferences> {
           children: [
             const Text(
               'Do you have any dietary preferences? 🥣',
-              style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold, letterSpacing: 0.7,
+                                      fontFamily: 'Poppins',),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 20, bottom: 20),
@@ -659,6 +700,8 @@ class _DietaryPreferencesState extends State<DietaryPreferences> {
                 style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
+                    letterSpacing: 0.7,
+                                      fontFamily: 'Ubuntu',
                     color: Constant.secondTextHeadColor),
               ),
             ),
@@ -677,8 +720,8 @@ class _DietaryPreferencesState extends State<DietaryPreferences> {
                                 veg = !veg;
                               });
                             },
-                            child: longSelectionContainer(
-                                size, "assets/diets/veg.jpg", "Vegetarian", veg),
+                            child: longSelectionContainer(size,
+                                "assets/diets/veg.jpg", "Vegetarian", veg),
                           ),
                           InkWell(
                             onTap: () {
@@ -703,7 +746,10 @@ class _DietaryPreferencesState extends State<DietaryPreferences> {
                                 });
                               },
                               child: longSelectionContainer(
-                                  size, "assets/diets/dairyfree.jpg", "Dairy-free", dairyfree),
+                                  size,
+                                  "assets/diets/dairyfree.jpg",
+                                  "Dairy-free",
+                                  dairyfree),
                             ),
                             InkWell(
                               onTap: () {
@@ -712,7 +758,10 @@ class _DietaryPreferencesState extends State<DietaryPreferences> {
                                 });
                               },
                               child: longSelectionContainer(
-                                  size, "assets/diets/glutenfree.jpg", "Gluten-free", glutenfree),
+                                  size,
+                                  "assets/diets/glutenfree.jpg",
+                                  "Gluten-free",
+                                  glutenfree),
                             ),
                           ],
                         ),
@@ -728,8 +777,8 @@ class _DietaryPreferencesState extends State<DietaryPreferences> {
                                   paleo = !paleo;
                                 });
                               },
-                              child: longSelectionContainer(
-                                  size, "assets/diets/paleo.jpg", "Paleo", paleo),
+                              child: longSelectionContainer(size,
+                                  "assets/diets/paleo.jpg", "Paleo", paleo),
                             ),
                             InkWell(
                               onTap: () {
@@ -738,7 +787,10 @@ class _DietaryPreferencesState extends State<DietaryPreferences> {
                                 });
                               },
                               child: longSelectionContainer(
-                                  size, "assets/diets/rawfood.jpg", "Raw food", rawfood),
+                                  size,
+                                  "assets/diets/rawfood.jpg",
+                                  "Raw food",
+                                  rawfood),
                             ),
                           ],
                         ),
@@ -764,7 +816,10 @@ class _DietaryPreferencesState extends State<DietaryPreferences> {
                                 });
                               },
                               child: longSelectionContainer(
-                                  size, "assets/diets/nutfree.jpg", "Nut-free", nutfree),
+                                  size,
+                                  "assets/diets/nutfree.jpg",
+                                  "Nut-free",
+                                  nutfree),
                             ),
                           ],
                         ),
@@ -781,7 +836,10 @@ class _DietaryPreferencesState extends State<DietaryPreferences> {
                                 });
                               },
                               child: longSelectionContainer(
-                                  size, "assets/diets/soyfree.jpg", "Soy-free", soyfree),
+                                  size,
+                                  "assets/diets/soyfree.jpg",
+                                  "Soy-free",
+                                  soyfree),
                             ),
                             InkWell(
                               onTap: () {
@@ -790,7 +848,10 @@ class _DietaryPreferencesState extends State<DietaryPreferences> {
                                 });
                               },
                               child: longSelectionContainer(
-                                  size, "assets/diets/peanutfree.jpg", "Peanut-free", peanutfree),
+                                  size,
+                                  "assets/diets/peanutfree.jpg",
+                                  "Peanut-free",
+                                  peanutfree),
                             ),
                           ],
                         ),
@@ -810,10 +871,14 @@ class _DietaryPreferencesState extends State<DietaryPreferences> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               InkWell(
-                  onTap: () => Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const HomeNavScreen())),
+                  onTap: () => Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(
+                          builder: (context) => const HomeNavScreen())),
                   child: customSkipButton(55, size.width / 2 - 40, 'Skip')),
               InkWell(
-                  onTap: () => Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const HomeNavScreen())),
+                  onTap: () => Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(
+                          builder: (context) => const HomeNavScreen())),
                   child: customButton(55, size.width / 2 - 40, 'Done'))
             ],
           )),

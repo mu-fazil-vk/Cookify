@@ -1,3 +1,4 @@
+import 'package:cooky_recipe/constants/constant.dart';
 import 'package:cooky_recipe/screens/intro/intro_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_indicator/loading_indicator.dart';
@@ -35,6 +36,7 @@ class _SplashScreenState extends State<SplashScreen> {
             'assets/logo1.png',
             height: 300,
             width: 300,
+            color: Constant.baseColor,
           )),
           const SizedBox(
             height: 60,

@@ -3,7 +3,7 @@ import 'package:cooky_recipe/storage/store_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
-import '../states/provider_state.dart';
+import '../states/bookmark_provider.dart';
 
 Widget selectionContainer(
     double height, double width, bool selected, Widget widget) {
@@ -67,6 +67,10 @@ Widget homeSelect(Meals meal) {
         padding: const EdgeInsets.only(bottom: 20, left: 20),
         margin: const EdgeInsets.only(top: 20, left: 20),
         decoration: BoxDecoration(
+          border: Border.all(
+            width: 0.5,
+            color: Colors.white,
+          ),
           borderRadius: BorderRadius.circular(20),
           image: DecorationImage(
             image: NetworkImage(meal.image),

@@ -3,7 +3,9 @@ import 'package:cooky_recipe/screens/main/bookmark_page.dart';
 import 'package:cooky_recipe/screens/main/search_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:provider/provider.dart';
 
+import '../../states/theme_provider.dart';
 import 'home_page.dart';
 
 class HomeNavScreen extends StatefulWidget {
@@ -28,10 +30,11 @@ class HomeNavScreenState extends State<HomeNavScreen> {
         body: _pages[_selectedIndex],
         bottomNavigationBar: Padding(
           padding: const EdgeInsets.all(20),
-          child: Container(
+          child: Consumer<ThemeProvider>(builder: (context, themeProvider, _) {
+            return Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
-                color: Colors.white,
+                color: themeProvider.isDarkMode? Color.fromARGB(82, 0, 0, 0) : Constant.white,
                 boxShadow: [
                   BoxShadow(
                     blurRadius: 20,
@@ -53,16 +56,19 @@ class HomeNavScreenState extends State<HomeNavScreen> {
                   duration: const Duration(milliseconds: 400),
                   tabBackgroundColor: Constant.skipButton,
                   color: Colors.black,
-                  tabs: const [
+                  tabs: [
                     GButton(
+                      iconColor: themeProvider.isDarkMode? Constant.white : Constant.black,
                       icon: Icons.home,
                       text: 'Home',
                     ),
                     GButton(
+                      iconColor: themeProvider.isDarkMode? Constant.white : Constant.black,
                       icon: Icons.search,
                       text: 'Search',
                     ),
                     GButton(
+                      iconColor: themeProvider.isDarkMode? Constant.white : Constant.black,
                       icon: Icons.bookmark,
                       text: 'Saved',
                     ),
@@ -74,7 +80,9 @@ class HomeNavScreenState extends State<HomeNavScreen> {
                     });
                   },
                 ),
-              ))),
+              )));
+          }
+          ),
         ));
   }
 }

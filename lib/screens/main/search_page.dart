@@ -7,6 +7,7 @@ import 'package:lottie/lottie.dart';
 
 import '../../api/api_fetch.dart';
 import '../../constants/constant.dart';
+import '../../storage/store_data.dart';
 import '../../widgets/selection_widget.dart';
 
 class SearchPage extends StatefulWidget {
@@ -19,10 +20,12 @@ class SearchPage extends StatefulWidget {
 class _SearchPageState extends State<SearchPage> {
   late List<Meals> mealData;
   Timer? timer;
+  String _theme = 'light';
 
   @override
   void initState() {
     super.initState();
+    fetchTheme();
     mealData = [];
     timer = Timer.periodic(const Duration(seconds: 1), (Timer t) {
       fetchMealData().then((meal) {
@@ -45,6 +48,9 @@ class _SearchPageState extends State<SearchPage> {
     super.dispose();
   }
 
+  Future<void> fetchTheme() async {
+    _theme = await getTheme();
+  }
 
   bool _isFocused = false;
   bool _isSearched = false;
@@ -59,19 +65,19 @@ class _SearchPageState extends State<SearchPage> {
       appBar: AppBar(
         title: Row(
           children: [
-            const Text(
+            Text(
               "Cookify",
               style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
-                  color: Colors.black,
+                  color: _theme == 'light' ? Constant.white : Constant.black,
                   fontFamily: 'Poppins',
                   letterSpacing: 0.9),
             ),
             Lottie.asset("assets/cook.json", height: 50, width: 50),
           ],
         ),
-        backgroundColor: Constant.white,
+        backgroundColor: Constant.baseColor,
         elevation: 0,
       ),
       body: SafeArea(
@@ -173,8 +179,7 @@ class _SearchPageState extends State<SearchPage> {
                                                       RecipePage(
                                                           meal: searchedMeal![
                                                               i]))),
-                                          child: homeSelect(
-                                              searchedMeal![i])),
+                                          child: homeSelect(searchedMeal![i])),
                                   ],
                                 ),
                               ),
@@ -188,8 +193,11 @@ class _SearchPageState extends State<SearchPage> {
                           child: Center(
                             child: Column(
                               children: [
-                                const SizedBox(height: 50,),
-                                Lottie.asset("assets/notfound.json", height: 250, width: 250),
+                                const SizedBox(
+                                  height: 50,
+                                ),
+                                Lottie.asset("assets/notfound.json",
+                                    height: 250, width: 250),
                                 const Text(
                                   'Not Found',
                                   style: TextStyle(
@@ -224,15 +232,14 @@ class _SearchPageState extends State<SearchPage> {
                                                           RecipePage(
                                                               meal: mealData[
                                                                   i]))),
-                                              child: homeSelect(
-                                                  mealData[i])),
+                                              child: homeSelect(mealData[i])),
                                       ],
                                     ),
                                   ),
                               ],
                             ),
                           ),
-              )
+                        )
             ],
           ),
           if (_isLoading)
