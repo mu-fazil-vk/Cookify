@@ -15,6 +15,16 @@ Cookify is a recipe finder app designed to help users discover and explore vario
 
 
 ## Screenshots
+<details>
+  <summary><b>Light ☀️</b></summary>
+  <img alt="fazil vk" src="https://github.com/mu-fazil-vk/Assets/blob/main/Cookify/light-1.jpg"/>
+  <img alt="fazil vk" src="https://github.com/mu-fazil-vk/Assets/blob/main/Cookify/light-2.jpg"/>
+</details>
+<details>
+  <summary><b>Dark 🌙</b></summary>
+  <img alt="fazil vk" src="https://github.com/mu-fazil-vk/Assets/blob/main/Cookify/dark-1.jpg"/>
+  <img alt="fazil vk" src="https://github.com/mu-fazil-vk/Assets/blob/main/Cookify/dark-2.jpg"/>
+</details>
 
 ## Technologies Used
 - **Frontend:**
@@ -28,7 +38,10 @@ Cookify is a recipe finder app designed to help users discover and explore vario
     - *Database:* Shared preferences.
 ## Download
 
-You can download the *Cookify* app from the following link: 
+You can download the *Cookify* app from the following link:
+<a href="https://www.mediafire.com/file/yjqwkoe3czxrgpm/Cookify.apk/file">
+  <img src="https://github.com/mu-fazil-vk/Download-Img/blob/main/download.png" height="155" width="300" >
+</a>
 
 ## usage
 
