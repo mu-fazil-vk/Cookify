@@ -31,7 +31,7 @@ class _SearchPageState extends State<SearchPage> {
       fetchMealData().then((meal) {
         if (mounted) {
           setState(() {
-            if (mealData.length < 20) {
+            if (mealData.length < 18) {
               mealData.add(meal);
             } else {
               t.cancel();

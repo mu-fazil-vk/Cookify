@@ -33,7 +33,7 @@ class _HomePageState extends State<HomePage> {
       fetchMealData().then((meal) {
         if (mounted) {
           setState(() {
-            if (mealData.length < 40) {
+            if (mealData.length < 20) {
               mealData.add(meal);
             } else {
               t.cancel();

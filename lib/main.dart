@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<ThemeProvider>(builder: (context, themeProvider, _) {
       return MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Cookify',
         theme: themeProvider.themeData,
         home: const SplashScreen(),

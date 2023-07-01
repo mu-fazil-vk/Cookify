@@ -871,14 +871,18 @@ class _DietaryPreferencesState extends State<DietaryPreferences> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               InkWell(
-                  onTap: () => Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(
-                          builder: (context) => const HomeNavScreen())),
+                  onTap: () {
+                    setStarted(true);
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                        builder: (context) => const HomeNavScreen()));
+                  },
                   child: customSkipButton(55, size.width / 2 - 40, 'Skip')),
               InkWell(
-                  onTap: () => Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(
-                          builder: (context) => const HomeNavScreen())),
+                  onTap: () {
+                    setStarted(true);
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(
+                        builder: (context) => const HomeNavScreen()));
+                  },
                   child: customButton(55, size.width / 2 - 40, 'Done'))
             ],
           )),

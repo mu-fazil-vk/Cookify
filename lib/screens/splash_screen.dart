@@ -1,5 +1,7 @@
 import 'package:cooky_recipe/constants/constant.dart';
 import 'package:cooky_recipe/screens/intro/intro_screen.dart';
+import 'package:cooky_recipe/screens/main/home_nav.dart';
+import 'package:cooky_recipe/storage/store_data.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_indicator/loading_indicator.dart';
 
@@ -11,16 +13,35 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  bool _isStarted = false;
+
   @override
   void initState() {
+    fetchIsStarted();
     super.initState();
-    Future.delayed(const Duration(seconds: 2), () {
-      // just delay for showing this slash page clearer because it too fast
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const IntroScreen()),
-      );
+    getIsStarted().then((value) {
+      if (value == true) {
+        Future.delayed(const Duration(seconds: 2), () {
+          // just delay for showing this slash page clearer because it too fast
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => const HomeNavScreen()),
+          );
+        });
+      } else {
+        Future.delayed(const Duration(seconds: 2), () {
+          // just delay for showing this slash page clearer because it too fast
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => const IntroScreen()),
+          );
+        });
+      }
     });
+  }
+
+  Future<void> fetchIsStarted() async {
+    _isStarted = await getIsStarted();
   }
 
   @override
