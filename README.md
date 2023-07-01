@@ -39,6 +39,7 @@ Cookify is a recipe finder app designed to help users discover and explore vario
 ## Download
 
 You can download the *Cookify* app from the following link:
+
 <a href="https://www.mediafire.com/file/yjqwkoe3czxrgpm/Cookify.apk/file">
   <img src="https://github.com/mu-fazil-vk/Download-Img/blob/main/download.png" height="155" width="300" >
 </a>
