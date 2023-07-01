@@ -1,3 +1,9 @@
+/*                    --Don't REMOVE this portion--
+==================================FAZIL_VK================================================
+Written and Copyrighted by Fazil vk, https://github.com/mu-fazil-vk
+==========================================================================================
+*/
+
 // ignore_for_file: deprecated_member_use
 
 import 'dart:async';

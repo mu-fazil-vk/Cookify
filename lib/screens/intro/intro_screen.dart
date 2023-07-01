@@ -1,3 +1,9 @@
+/*                    --Don't REMOVE this portion--
+==================================FAZIL_VK================================================
+Written and Copyrighted by Fazil vk, https://github.com/mu-fazil-vk
+==========================================================================================
+*/
+
 import 'package:cooky_recipe/screens/intro/preferences_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';

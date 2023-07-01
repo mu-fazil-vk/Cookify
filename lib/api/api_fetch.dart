@@ -1,3 +1,9 @@
+/*                    --Don't REMOVE this portion--
+==================================FAZIL_VK================================================
+Written and Copyrighted by Fazil vk, https://github.com/mu-fazil-vk
+==========================================================================================
+*/
+
 // ignore_for_file: body_might_complete_normally_catch_error
 
 import 'dart:convert';

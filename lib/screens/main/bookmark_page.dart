@@ -1,3 +1,9 @@
+/*                    --Don't REMOVE this portion--
+==================================FAZIL_VK================================================
+Written and Copyrighted by Fazil vk, https://github.com/mu-fazil-vk
+==========================================================================================
+*/
+
 import 'dart:async';
 import 'package:cooky_recipe/screens/main/recipe_page.dart';
 import 'package:flutter/material.dart';

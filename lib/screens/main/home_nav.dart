@@ -1,3 +1,9 @@
+/*                    --Don't REMOVE this portion--
+==================================FAZIL_VK================================================
+Written and Copyrighted by Fazil vk, https://github.com/mu-fazil-vk
+==========================================================================================
+*/
+
 import 'package:cooky_recipe/constants/constant.dart';
 import 'package:cooky_recipe/screens/main/bookmark_page.dart';
 import 'package:cooky_recipe/screens/main/search_page.dart';

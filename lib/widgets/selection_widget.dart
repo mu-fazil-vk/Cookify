@@ -1,8 +1,13 @@
+/*                    --Don't REMOVE this portion--
+==================================FAZIL_VK================================================
+Written and Copyrighted by Fazil vk, https://github.com/mu-fazil-vk
+==========================================================================================
+*/
+
 import 'package:cooky_recipe/api/api_fetch.dart';
 import 'package:cooky_recipe/constants/constant.dart';
 import 'package:cooky_recipe/storage/store_data.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:marquee/marquee.dart';
 import 'package:provider/provider.dart';

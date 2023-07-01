@@ -1,5 +1,10 @@
-import 'package:flutter/material.dart';
+/*                    --Don't REMOVE this portion--
+==================================FAZIL_VK================================================
+Written and Copyrighted by Fazil vk, https://github.com/mu-fazil-vk
+==========================================================================================
+*/
 
+import 'package:flutter/material.dart';
 import '../constants/constant.dart';
 
 class CustomProgressIndicator extends StatelessWidget {
